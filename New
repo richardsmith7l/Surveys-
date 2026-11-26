@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101126">
+<title>EarnChime Global — Surveys that respect your time</title>
+<style>
+:root{--bg:#f5f6fb;--panel:#fff;--ink:#17182b;--muted:#777b91;--line:#e8e9f1;--accent:#7258f5;--accent2:#a18cff;--soft:#f0edff;--green:#159c70;--shadow:0 12px 35px #2220440c}
+[data-theme=dark]{--bg:#101126;--panel:#191b35;--ink:#f5f4ff;--muted:#a5a6bd;--line:#2b2d4b;--soft:#292448;--shadow:0 12px 35px #0003}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;transition:background .25s,color .25s}
+button{font:inherit;cursor:pointer;border:0} .app{max-width:1160px;margin:auto;padding:22px 22px 90px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:25px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.5px;font-size:19px}.logo{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#8b75ff,#5540d9);display:grid;place-items:center;color:white;box-shadow:0 7px 18px #7258f54a;font-size:19px}
+.header-actions{display:flex;gap:9px}.iconbtn{width:42px;height:42px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:14px}
+.welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:12px 0 20px}.eyebrow{color:var(--accent);font-weight:750;font-size:12px;letter-spacing:1.3px;text-transform:uppercase}
+h1{font-size:clamp(25px,4vw,36px);letter-spacing:-1.3px;line-height:1.1;margin:7px 0}.sub{color:var(--muted);margin:0}.profile{width:44px;height:44px;border-radius:50%;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:800}
+.balance{background:linear-gradient(115deg,#27204e,#5944b7 62%,#8872f6);color:white;border-radius:24px;padding:23px 25px;display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 16px 36px #5e4ac52b;position:relative;overflow:hidden}
+.balance:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #ffffff24;border-radius:50%;right:100px;top:-145px;box-shadow:0 0 0 30px #ffffff09,0 0 0 60px #ffffff07}
+.balance small{opacity:.8}.amount{font-size:34px;font-weight:850;letter-spacing:-1px;margin-top:4px}.balance-actions{display:flex;gap:9px;z-index:1}.primary,.ghost{padding:11px 16px;border-radius:13px;font-weight:750;transition:transform .18s,filter .18s}.primary{background:white;color:#4938a7}.ghost{background:#ffffff1c;color:white;border:1px solid #ffffff38}.primary:active,.ghost:active,.iconbtn:active,.survey:active{transform:scale(.97)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 25px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px 16px}.stat b{display:block;font-size:19px}.stat span{font-size:12px;color:var(--muted)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:24px 0 13px}.section-head h2{margin:0;font-size:20px;letter-spacing:-.5px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.filters{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.filter{white-space:nowrap;padding:8px 13px;border:1px solid var(--line);border-radius:30px;background:var(--panel);color:var(--muted);font-size:13px}.filter.active{background:var(--soft);border-color:#bcb0ff;color:var(--accent);font-weight:750}
+.survey-list{display:grid;gap:11px;margin-top:13px}.survey{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);padding:15px;border-radius:18px;box-shadow:var(--shadow);transition:transform .2s,border .2s;animation:rise .45s both}.survey:hover{transform:translateY(-2px);border-color:#c7bfff}.survey-icon{width:44px;height:44px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:20px;flex:none}.survey-info{flex:1;min-width:0}.survey-info b{display:block}.meta{display:flex;gap:12px;color:var(--muted);font-size:12px;margin-top:3px;flex-wrap:wrap}.reward{text-align:right;min-width:82px}.reward b{display:block;color:var(--green);font-size:17px}.reward button{background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:750;margin-top:5px}
+.note{margin-top:18px;background:var(--soft);border-radius:15px;padding:13px 15px;color:var(--muted);font-size:12px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:5}.nav{width:min(1160px,100%);display:flex;justify-content:space-around;padding:9px 10px calc(9px + env(safe-area-inset-bottom))}.nav button{background:none;color:var(--muted);font-size:11px;display:grid;gap:3px;justify-items:center;min-width:62px}.nav button span{font-size:19px}.nav button.active{color:var(--accent);font-weight:800}
+.toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,15px);opacity:0;background:#20213a;color:#fff;padding:11px 17px;border-radius:30px;z-index:20;transition:.25s;pointer-events:none;box-shadow:0 8px 24px #0003}.toast.show{opacity:1;transform:translate(-50%,0)}
+.modal{position:fixed;inset:0;background:#090a1b99;display:none;place-items:center;padding:18px;z-index:10}.modal.open{display:grid}.dialog{width:min(420px,100%);background:var(--panel);border:1px solid var(--line);border-radius:23px;padding:22px;box-shadow:0 25px 80px #0004;animation:pop .25s}.dialog h3{margin:0 0 5px;font-size:21px}.dialog p{color:var(--muted);font-size:13px}.dialog button{margin-top:12px;width:100%;background:var(--accent);color:#fff;border-radius:12px;padding:12px;font-weight:750}
+.toggleline{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}input[type=checkbox]{accent-color:var(--accent);width:19px;height:19px}
+.eye{filter:sepia(.12) saturate(.9);background:#f6edcf!important;color:#28220f!important}.eye .app{background:#f6edcf}.eye .survey,.eye .stat{background:#fff9e9}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@media(max-width:600px){.app{padding:16px 14px 90px}.welcome{margin-top:8px}.balance{padding:19px;border-radius:20px;align-items:flex-start;flex-direction:column}.balance-actions{width:100%}.balance-actions button{flex:1}.stats{gap:8px}.stat{padding:12px 10px}.stat b{font-size:16px}.survey{padding:12px;gap:10px}.survey-icon{width:39px;height:39px}.reward{min-width:72px}.reward b{font-size:15px}.meta{gap:7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="brand"><div class="logo">✦</div>EarnChime <span style="color:var(--accent)">Global</span></div>
+<div class="header-actions"><button class="iconbtn" id="eyeBtn" aria-label="Eye comfort" title="Eye comfort">☼</button><button class="iconbtn" id="soundBtn" aria-label="Sound" title="Sound">♫</button><button class="iconbtn" id="themeBtn" aria-label="Toggle theme" title="Toggle theme">☾</button></div></header>
+<section class="welcome"><div><div class="eyebrow">YOUR REWARDS SPACE</div><h1>Good day, Explorer 👋</h1><p class="sub">A little time. A little insight. Rewards that add up.</p></div><div class="profile">E</div></section>
+<section class="balance"><div><small>Available balance · Demo account</small><div class="amount" id="balance">$12.80</div><small>≈ 1,280 points</small></div><div class="balance-actions"><button class="primary" id="withdraw">↗ Withdraw</button><button class="ghost" id="history">◷ History</button></div></section>
+<section class="stats"><div class="stat"><b>08</b><span>Surveys completed</span></div><div class="stat"><b>$4.20</b><span>Earned this week</span></div><div class="stat"><b>92%</b><span>Profile complete</span></div></section>
+<div class="section-head"><div><h2>Available surveys</h2><p>Choose what fits your time today.</p></div><div style="font-size:12px;color:var(--muted)">↻ Updated now</div></div>
+<div class="filters" id="filters"><button class="filter active" data-filter="all">All surveys</button><button class="filter" data-filter="short">Under 5 min</button><button class="filter" data-filter="high">Higher reward</button></div>
+<div class="survey-list" id="surveyList"></div>
+<div class="note">ⓘ Demo preview: survey listings, balance and withdrawals are sample data. Real survey providers, verified accounts and payment processing must be connected before launch. Rewards are never guaranteed.</div>
+</div>
+<nav class="bottom"><div class="nav"><button class="active"><span>⌂</span>Home</button><button id="navSurveys"><span>▤</span>Surveys</button><button id="navWallet"><span>◈</span>Wallet</button><button id="navProfile"><span>◎</span>Profile</button></div></nav>
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="dialog"><h3 id="modalTitle">Your wallet</h3><p id="modalText">This is a preview interaction.</p><button id="closeModal">Got it</button></div></div>
+<script>
+const surveys=[
+ {id:1,icon:"🛍️",name:"Shopping habits & preferences",time:4,pay:0.85,rating:"4.8"},
+ {id:2,icon:"📱",name:"Mobile apps and technology",time:7,pay:1.40,rating:"4.9"},
+ {id:3,icon:"🥤",name:"Everyday food & beverages",time:3,pay:0.55,rating:"4.7"},
+ {id:4,icon:"🚗",name:"Transport in your city",time:9,pay:1.75,rating:"4.6"},
+ {id:5,icon:"🏡",name:"Home products and lifestyle",time:5,pay:1.05,rating:"4.8"}
+];
+const $=s=>document.querySelector(s);let sound=true,eye=false;
+function chime(freq=660){if(!sound)return;try{let c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=freq;o.type="sine";g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.08,c.currentTime+.015);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.18);o.start();o.stop(c.currentTime+.19);o.onended=()=>c.close()}catch(e){}}
+function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),2200)}
+function showModal(title,text){$('#modalTitle').textContent=title;$('#modalText').textContent=text;$('#modal').classList.add('open');chime(520)}
+function render(filter='all'){let list=surveys.filter(s=>filter==='short'?s.time<5:filter==='high'?s.pay>=1: true);$('#surveyList').innerHTML=list.map((s,i)=>`<article class="survey" style="animation-delay:${i*55}ms"><div class="survey-icon">${s.icon}</div><div class="survey-info"><b>${s.name}</b><div class="meta"><span>◷ ${s.time} min</span><span>★ ${s.rating}</span><span>✓ Quick match</span></div></div><div class="reward"><b>$${s.pay.toFixed(2)}</b><button onclick="startSurvey(${s.id})">Start survey</button></div></article>`).join('')}
+function startSurvey(id){let s=surveys.find(x=>x.id===id);showModal('Survey preview',`${s.name} · ${s.time} minutes · $${s.pay.toFixed(2)} sample reward. A real survey partner must be connected before this can launch.`)}
+$('#filters').addEventListener('click',e=>{if(!e.target.matches('button'))return;document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');render(e.target.dataset.filter);chime()});
+$('#themeBtn').onclick=()=>{let d=document.documentElement.dataset.theme==='dark';document.documentElement.dataset.theme=d?'light':'dark';$('#themeBtn').textContent=d?'☾':'☀';chime()};
+$('#eyeBtn').onclick=()=>{eye=!eye;document.body.classList.toggle('eye',eye);$('#eyeBtn').textContent=eye?'◉':'☼';toast(eye?'Eye comfort mode on':'Eye comfort mode off');chime(740)};
+$('#soundBtn').onclick=()=>{sound=!sound;$('#soundBtn').textContent=sound?'♫':'♪';toast(sound?'Sounds enabled':'Sounds muted');if(sound)chime()};
+$('#withdraw').onclick=()=>showModal('Withdrawal preview ✨','Your sample balance is $12.80. Live withdrawals are disabled in this demo. Connect a secure backend, identity checks and a payment provider before accepting withdrawal requests.');
+$('#history').onclick=()=>showModal('Activity history','Your completed survey and reward activity will appear here once the platform backend is connected.');
+$('#closeModal').onclick=()=>$('#modal').classList.remove('open');$('#modal').onclick=e=>{if(e.target.id==='modal')$('#modal').classList.remove('open')};
+$('#navSurveys').onclick=()=>{document.querySelector('.section-head').scrollIntoView({behavior:'smooth'});chime()};
+$('#navWallet').onclick=()=>showModal('Your wallet','Track available balance, pending rewards, transactions and withdrawal requests here.');
+$('#navProfile').onclick=()=>showModal('Your profile','Manage your account, survey profile, privacy, notifications and accessibility settings here.');
+render();
+setTimeout(()=>toast('Welcome to EarnChime Global ✨'),650);
+</script>
+</body></html>
